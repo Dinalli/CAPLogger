@@ -55,6 +55,33 @@ NSString *const kNotificationUpdateEventDisplay = @"kNotificationUpdateEventDisp
     });
 }
 
+-(void)logEventWithCustomKey:(NSString*)customKey EventDate:(NSDate *)eventTime Data:(NSDictionary *)eventData withVisualNotification:(BOOL)showNotification
+{
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+    
+    NSString *eventDataString = [NSString stringWithFormat:@"%@", eventData];
+    eventDataString = [eventDataString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    NSString *writeString = [NSString stringWithFormat:@"%@,%@,%@\r\n",customKey, [dateFormatter stringFromDate:eventTime],eventDataString];
+    
+    // check if file exists, if not create it and write to it.
+    NSFileHandle *handle;
+    handle = [NSFileHandle fileHandleForWritingAtPath:[self logFile]];
+    //say to handle where's the file fo write
+    [handle truncateFileAtOffset:[handle seekToEndOfFile]];
+    //position handle cursor to the end of file
+    [handle writeData:[writeString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    if(showNotification)
+    {
+        [self addDisplayEvent:@{@"key":customKey, @"eventTimestamp":[dateFormatter stringFromDate:eventTime],@"eventData":eventDataString}];
+    }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        [self houseKeepFiles];
+    });
+    
+}
+
 #pragma mark register event
 -(void)addDisplayEvent:(NSDictionary *)eventInfo
 {

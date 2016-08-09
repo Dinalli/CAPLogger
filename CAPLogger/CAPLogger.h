@@ -41,6 +41,7 @@ extern NSString *const kNotificationUpdateEventDisplay;
 @property (nonatomic) NSMutableArray *displayEvents;
 
 -(void)logEventWithEventType:(CAPEventType)eventType withIdentifier:(NSString *)eventId withDate:(NSDate *)eventTime vehicleVin:(NSString *)vin andData:(NSDictionary *)eventData;
+-(void)logEventWithCustomKey:(NSString*)customKey EventDate:(NSDate *)eventTime Data:(NSDictionary *)eventData withVisualNotification:(BOOL)showNotification;
 
 + (CAPLogger *)sharedCAPLogger;
 
