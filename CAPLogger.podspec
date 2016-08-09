@@ -11,6 +11,5 @@ s.author = { "Andrew Donnelly" => "Dinalli@gmail.com" }
 s.homepage = "https://github.com/Dinalli/CAPLogger"
 s.source = { :git => "https://github.com/Dinalli/CAPLogger.git", :tag => "#{s.version}"}
 s.framework = "UIKit"
-s.source_files = "CAPLogger/**/*.{h}"
-s.resources = "CAPLogger/**/*.{png,jpeg,jpg,storyboard,xib}"
+s.source_files = "CAPLogger/**/*.{h,m}"
 end
