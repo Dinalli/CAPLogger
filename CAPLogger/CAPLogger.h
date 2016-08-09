@@ -16,4 +16,33 @@ FOUNDATION_EXPORT const unsigned char CAPLoggerVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <CAPLogger/PublicHeader.h>
 
+@interface CAPLogger : NSObject
 
+typedef enum {
+    AllEvents,
+    StatusChangeEvents,
+    BlubEvents,
+    TsdpEvents,
+    NotificationEvents
+} CAPEventLogLevel;
+
+typedef enum {
+    StatusChangeEvent,
+    CLIENTEvent,
+    TSDPEvent,
+    NotificationEvent
+} CAPEventType;
+
+extern NSString *const kNotificationUpdateEventDisplay;
+
+#define logEventTypeString(enum) [@[@"StatusChangeEvent",@"CLIENTEvent",@"TSDPEvent" @"NotificationEvent"] objectAtIndex:enum]
+
+@property (nonatomic) CAPEventLogLevel logLevel;
+@property (nonatomic) NSMutableArray *displayEvents;
+
+-(void)logEventWithEventType:(CAPEventType)eventType withIdentifier:(NSString *)eventId withDate:(NSDate *)eventTime vehicleVin:(NSString *)vin andData:(NSDictionary *)eventData;
+
++ (CAPLogger *)sharedCAPLogger;
+
+
+@end

@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		405BECBC1D59CA6D008F15C8 /* CAPLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 405BECBB1D59CA6D008F15C8 /* CAPLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		405BECC41D59CBD3008F15C8 /* CAPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 405BECC31D59CBD3008F15C8 /* CAPLogger.m */; };
+		798CC3474F565A0A3C029B9B /* libPods-CAPLogger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E8645082AA9DCC609153D6 /* libPods-CAPLogger.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2059E420293A2D936EFF8533 /* Pods-CAPLogger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CAPLogger.release.xcconfig"; path = "Pods/Target Support Files/Pods-CAPLogger/Pods-CAPLogger.release.xcconfig"; sourceTree = "<group>"; };
+		25E8645082AA9DCC609153D6 /* libPods-CAPLogger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CAPLogger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		405BECB81D59CA6D008F15C8 /* CAPLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CAPLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		405BECBB1D59CA6D008F15C8 /* CAPLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPLogger.h; sourceTree = "<group>"; };
 		405BECBD1D59CA6D008F15C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		405BECC31D59CBD3008F15C8 /* CAPLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPLogger.m; sourceTree = "<group>"; };
+		CCCFB66F2F691A772C39CA26 /* Pods-CAPLogger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CAPLogger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CAPLogger/Pods-CAPLogger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,17 +27,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				798CC3474F565A0A3C029B9B /* libPods-CAPLogger.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23FD014BABFD433240913180 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				25E8645082AA9DCC609153D6 /* libPods-CAPLogger.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		405BECAE1D59CA6D008F15C8 = {
 			isa = PBXGroup;
 			children = (
 				405BECBA1D59CA6D008F15C8 /* CAPLogger */,
 				405BECB91D59CA6D008F15C8 /* Products */,
+				DD03987AFBEF7E840E6865C9 /* Pods */,
+				23FD014BABFD433240913180 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,9 +64,19 @@
 			isa = PBXGroup;
 			children = (
 				405BECBB1D59CA6D008F15C8 /* CAPLogger.h */,
+				405BECC31D59CBD3008F15C8 /* CAPLogger.m */,
 				405BECBD1D59CA6D008F15C8 /* Info.plist */,
 			);
 			path = CAPLogger;
+			sourceTree = "<group>";
+		};
+		DD03987AFBEF7E840E6865C9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CCCFB66F2F691A772C39CA26 /* Pods-CAPLogger.debug.xcconfig */,
+				2059E420293A2D936EFF8533 /* Pods-CAPLogger.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,10 +97,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 405BECC01D59CA6D008F15C8 /* Build configuration list for PBXNativeTarget "CAPLogger" */;
 			buildPhases = (
+				492E0A47EF3AE577F02C2FBD /* [CP] Check Pods Manifest.lock */,
 				405BECB31D59CA6D008F15C8 /* Sources */,
 				405BECB41D59CA6D008F15C8 /* Frameworks */,
 				405BECB51D59CA6D008F15C8 /* Headers */,
 				405BECB61D59CA6D008F15C8 /* Resources */,
+				1BAAD80ABDD06EE99264A985 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,11 +154,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1BAAD80ABDD06EE99264A985 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CAPLogger/Pods-CAPLogger-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		492E0A47EF3AE577F02C2FBD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		405BECB31D59CA6D008F15C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				405BECC41D59CBD3008F15C8 /* CAPLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +291,7 @@
 		};
 		405BECC11D59CA6D008F15C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCCFB66F2F691A772C39CA26 /* Pods-CAPLogger.debug.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -244,6 +308,7 @@
 		};
 		405BECC21D59CA6D008F15C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2059E420293A2D936EFF8533 /* Pods-CAPLogger.release.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -277,6 +342,7 @@
 				405BECC21D59CA6D008F15C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
