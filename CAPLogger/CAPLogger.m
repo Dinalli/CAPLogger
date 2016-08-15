@@ -182,7 +182,19 @@ NSString *const kNotificationUpdateEventDisplay = @"kNotificationUpdateEventDisp
 
 // Multipeer network delegate
 -(void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state{
-    NSLog(@"peer %@ didChangeState:%lu", peerID.displayName, state);
+    
+    switch (state)
+    {
+        case MCSessionStateNotConnected:
+            NSLog(@"peer %@ Not connected", peerID);
+            break;
+        case MCSessionStateConnected:
+             NSLog(@"peer %@ Connected", peerID);
+            break;
+        case MCSessionStateConnecting:
+            NSLog(@"peer %@ Connecting", peerID);
+            break;
+    }
 }
 
 -(void)session:(MCSession *)session didReceiveCertificate:(NSArray *)certificate fromPeer:(MCPeerID *)peerID certificateHandler:(void (^)(BOOL))certificateHandler
