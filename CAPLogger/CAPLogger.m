@@ -27,6 +27,14 @@ NSString *const kNotificationUpdateEventDisplay = @"kNotificationUpdateEventDisp
         [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"]];
         [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"Europe/London"]];
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+
+        _peerID = [[MCPeerID alloc] initWithDisplayName:[[UIDevice currentDevice] name]];
+        _session = [[MCSession alloc] initWithPeer:_peerID];
+        _session.delegate = self;
+        
+        _serviceAdvertiser =  [[MCNearbyServiceAdvertiser alloc] initWithPeer:_peerID discoveryInfo:nil serviceType:@"CAPLogger"];
+        _serviceAdvertiser.delegate = self;
+        [_serviceAdvertiser startAdvertisingPeer];
     }
     return self;
 }
@@ -75,6 +83,8 @@ NSString *const kNotificationUpdateEventDisplay = @"kNotificationUpdateEventDisp
     {
         [self addDisplayEvent:@{@"key":customKey, @"eventTimestamp":[dateFormatter stringFromDate:eventTime],@"eventData":eventDataString}];
     }
+    
+    [self sendToConnectedPeers:@{@"key":customKey, @"eventTimestamp":[dateFormatter stringFromDate:eventTime],@"eventData":eventDataString}];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         [self houseKeepFiles];
@@ -155,4 +165,58 @@ NSString *const kNotificationUpdateEventDisplay = @"kNotificationUpdateEventDisp
     });
     return sharedLogger;
 }
+
+
+-(void)sendToConnectedPeers:(NSDictionary *)eventInfo
+{
+    if(_session.connectedPeers.count > 0)
+    {
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:eventInfo
+                                                           options:NSJSONWritingPrettyPrinted
+                                                             error:&error];
+        
+        [_session sendData:jsonData toPeers:_session.connectedPeers withMode:MCSessionSendDataReliable error:&error];
+    }
+}
+
+// Multipeer network delegate
+-(void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state{
+    NSLog(@"peer %@ didChangeState:%lu", peerID.displayName, state);
+}
+
+-(void)session:(MCSession *)session didReceiveCertificate:(NSArray *)certificate fromPeer:(MCPeerID *)peerID certificateHandler:(void (^)(BOOL))certificateHandler
+{
+    certificateHandler(true);
+}
+
+-(void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID{
+    
+}
+
+
+-(void)session:(MCSession *)session didStartReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID withProgress:(NSProgress *)progress{
+    
+}
+
+
+-(void)session:(MCSession *)session didFinishReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID atURL:(NSURL *)localURL withError:(NSError *)error{
+    
+}
+
+
+-(void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID{
+    
+}
+
+-(void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void (^)(BOOL, MCSession * _Nonnull))invitationHandler
+{
+    invitationHandler(true, _session);
+}
+
+-(void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didNotStartAdvertisingPeer:(NSError *)error
+{
+    NSLog(@"Did not start advertising %@", error.localizedDescription);
+}
+
 @end

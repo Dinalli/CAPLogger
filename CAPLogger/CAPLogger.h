@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MultipeerConnectivity/MultipeerConnectivity.h>
 
 //! Project version number for CAPLogger.
 FOUNDATION_EXPORT double CAPLoggerVersionNumber;
@@ -16,7 +17,7 @@ FOUNDATION_EXPORT const unsigned char CAPLoggerVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <CAPLogger/PublicHeader.h>
 
-@interface CAPLogger : NSObject
+@interface CAPLogger : NSObject <MCSessionDelegate, MCNearbyServiceAdvertiserDelegate>
 
 typedef enum {
     AllEvents,
@@ -45,5 +46,8 @@ extern NSString *const kNotificationUpdateEventDisplay;
 
 + (CAPLogger *)sharedCAPLogger;
 
+@property (nonatomic, strong) MCPeerID *peerID;
+@property (nonatomic, strong) MCSession *session;
+@property (nonatomic, strong) MCNearbyServiceAdvertiser *serviceAdvertiser;
 
 @end
