@@ -14,6 +14,9 @@
 		4034921A1D5E0A0300F1BEFF /* 711-trash@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 403492171D5E0A0300F1BEFF /* 711-trash@3x.png */; };
 		405BECBC1D59CA6D008F15C8 /* CAPLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 405BECBB1D59CA6D008F15C8 /* CAPLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		405BECC41D59CBD3008F15C8 /* CAPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 405BECC31D59CBD3008F15C8 /* CAPLogger.m */; };
+		40B67D5F1D61C546003FDB6F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B67D5E1D61C546003FDB6F /* NotificationCenter.framework */; };
+		40B67D631D61C546003FDB6F /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B67D621D61C546003FDB6F /* TodayViewController.m */; };
+		40B67D661D61C546003FDB6F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40B67D641D61C546003FDB6F /* MainInterface.storyboard */; };
 		798CC3474F565A0A3C029B9B /* libPods-CAPLogger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E8645082AA9DCC609153D6 /* libPods-CAPLogger.a */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,12 @@
 		405BECBB1D59CA6D008F15C8 /* CAPLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPLogger.h; sourceTree = "<group>"; };
 		405BECBD1D59CA6D008F15C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		405BECC31D59CBD3008F15C8 /* CAPLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPLogger.m; sourceTree = "<group>"; };
+		40B67D5D1D61C546003FDB6F /* LoggerToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LoggerToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		40B67D5E1D61C546003FDB6F /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		40B67D611D61C546003FDB6F /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		40B67D621D61C546003FDB6F /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		40B67D651D61C546003FDB6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		40B67D671D61C546003FDB6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCCFB66F2F691A772C39CA26 /* Pods-CAPLogger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CAPLogger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CAPLogger/Pods-CAPLogger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,6 +50,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		40B67D5A1D61C546003FDB6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40B67D5F1D61C546003FDB6F /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -48,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				25E8645082AA9DCC609153D6 /* libPods-CAPLogger.a */,
+				40B67D5E1D61C546003FDB6F /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -66,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				405BECBA1D59CA6D008F15C8 /* CAPLogger */,
+				40B67D601D61C546003FDB6F /* LoggerToday */,
 				405BECB91D59CA6D008F15C8 /* Products */,
 				DD03987AFBEF7E840E6865C9 /* Pods */,
 				23FD014BABFD433240913180 /* Frameworks */,
@@ -76,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				405BECB81D59CA6D008F15C8 /* CAPLogger.framework */,
+				40B67D5D1D61C546003FDB6F /* LoggerToday.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,6 +111,17 @@
 				403492111D5DF76D00F1BEFF /* LoggerViewController.m */,
 			);
 			path = CAPLogger;
+			sourceTree = "<group>";
+		};
+		40B67D601D61C546003FDB6F /* LoggerToday */ = {
+			isa = PBXGroup;
+			children = (
+				40B67D611D61C546003FDB6F /* TodayViewController.h */,
+				40B67D621D61C546003FDB6F /* TodayViewController.m */,
+				40B67D641D61C546003FDB6F /* MainInterface.storyboard */,
+				40B67D671D61C546003FDB6F /* Info.plist */,
+			);
+			path = LoggerToday;
 			sourceTree = "<group>";
 		};
 		DD03987AFBEF7E840E6865C9 /* Pods */ = {
@@ -137,6 +168,23 @@
 			productReference = 405BECB81D59CA6D008F15C8 /* CAPLogger.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		40B67D5C1D61C546003FDB6F /* LoggerToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40B67D6A1D61C546003FDB6F /* Build configuration list for PBXNativeTarget "LoggerToday" */;
+			buildPhases = (
+				40B67D591D61C546003FDB6F /* Sources */,
+				40B67D5A1D61C546003FDB6F /* Frameworks */,
+				40B67D5B1D61C546003FDB6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoggerToday;
+			productName = LoggerToday;
+			productReference = 40B67D5D1D61C546003FDB6F /* LoggerToday.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -149,6 +197,9 @@
 					405BECB71D59CA6D008F15C8 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
+					40B67D5C1D61C546003FDB6F = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 405BECB21D59CA6D008F15C8 /* Build configuration list for PBXProject "CAPLogger" */;
@@ -157,6 +208,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 405BECAE1D59CA6D008F15C8;
 			productRefGroup = 405BECB91D59CA6D008F15C8 /* Products */;
@@ -164,6 +216,7 @@
 			projectRoot = "";
 			targets = (
 				405BECB71D59CA6D008F15C8 /* CAPLogger */,
+				40B67D5C1D61C546003FDB6F /* LoggerToday */,
 			);
 		};
 /* End PBXProject section */
@@ -176,6 +229,14 @@
 				403492181D5E0A0300F1BEFF /* 711-trash.png in Resources */,
 				403492191D5E0A0300F1BEFF /* 711-trash@2x.png in Resources */,
 				4034921A1D5E0A0300F1BEFF /* 711-trash@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40B67D5B1D61C546003FDB6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40B67D661D61C546003FDB6F /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +285,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		40B67D591D61C546003FDB6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40B67D631D61C546003FDB6F /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		40B67D641D61C546003FDB6F /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40B67D651D61C546003FDB6F /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		405BECBE1D59CA6D008F15C8 /* Debug */ = {
@@ -351,6 +431,28 @@
 			};
 			name = Release;
 		};
+		40B67D681D61C546003FDB6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LoggerToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.CAPLogger.LoggerToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		40B67D691D61C546003FDB6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LoggerToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.CAPLogger.LoggerToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -371,6 +473,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		40B67D6A1D61C546003FDB6F /* Build configuration list for PBXNativeTarget "LoggerToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40B67D681D61C546003FDB6F /* Debug */,
+				40B67D691D61C546003FDB6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
